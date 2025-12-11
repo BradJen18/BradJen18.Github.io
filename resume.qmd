@@ -1,88 +1,49 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Resume
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
+# Bradley Jensen
 
-<div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
-</div>
-
-
-## Currently
-
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
+Student at Brigham Young University - Idaho
 
 ## Education
 
-`1654-1660`
-__The King's School, Grantham.__
+Studying Data science at Brigham Young University - Idaho
 
-`June 1661 - now`
-__Trinity College, Cambridge__
+## Experience
 
-- Sizar
+Voluntary Religious Missionary                                        August 2023 - August 2025
+                                                                        Antananarivo, Madagascar
+The Church of Jesus Christ of Latter Day Saints
 
-`1667 - death`
-__Trinity College, Cambridge__
+ Established relationships within 5 communities and led religious efforts to teach principles of the 
+Gospel of Jesus Christ
+ Promoted positive relations with 1-3 coworkers from vast cultural and ethnic backgrounds in multiple 
+shared house settings
+ Supervised groups of 9-26 missionaries in day-to-day work to sustain effective use of time and 
+obedience to missionary standards
 
-- Fellow
+Lot Attendant                                                              June 2023 - August 2023
+                                                                                    Tempe, Arizona
+Insight motors
 
+ Coordinated with marketing department and transported 7-10 vehicles weekly to desired locations
+ Maintained highest quality of cleanliness in 50+ vehicles held on lot
+ Serviced vehicles with minor issues to ensure safe use and improved durability
 
+Crew Member
+                                                                                    Mesa, Arizona
+Little Caesars
 
-## Awards
+ Interacted with 4-5 coworkers in high-stress scenarios, fulfilling orders and ensuring high-quality 
+product
+ Managed cleanliness of store and ensured floors, counters, and equipment were sanitized
+ Communicated needs of each station and insured 5 stations were run efficiently at all times
 
-`2012`
-President, *Royal Society*, London, UK
+## Languages
 
-Associate, *French Academy of Science*, Paris, France
-
-
-
-## Publications
-
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
-
-
-## Occupation
-
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
+ English(Native), Malagasy(Conversational)
+ Profficient in Python, SQL, R
 
 <!-- ### Footer
 

@@ -10,10 +10,10 @@ website:
 
   page-footer: 
     border: true
-    left: "Bradley Jensen 2024©"
+    left: "Bradley Jensen 2025©"
     right: 
       - icon: linkedin
-        href: www.linkedin.com/in/bradley-jensen-217b55389
+        href: linkedin.com/in/bradley-jensen-217b55389
 
   navbar:
     background: primary
