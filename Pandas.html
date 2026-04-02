@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>about me – Bradley Jensen - Data Science Portfolio</title>
+<title>Pandas – Bradley Jensen - Data Science Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,10 +23,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -75,6 +110,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -292,9 +330,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#title-1-header" id="toc-title-1-header" class="nav-link active" data-scroll-target="#title-1-header">Title 1 Header</a>
+  <li><a href="#projects" id="toc-projects" class="nav-link active" data-scroll-target="#projects">Projects</a>
   <ul class="collapse">
-  <li><a href="#title-2-header" id="toc-title-2-header" class="nav-link" data-scroll-target="#title-2-header">Title 2 Header</a></li>
+  <li><a href="#pandas-machine-learning-on-starwars-data" id="toc-pandas-machine-learning-on-starwars-data" class="nav-link" data-scroll-target="#pandas-machine-learning-on-starwars-data">Pandas &amp; machine learning on Starwars data</a></li>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -305,8 +347,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">about me</h1>
-<p class="subtitle lead">my data science portfolio</p>
+<h1 class="title">Pandas</h1>
+<p class="subtitle lead">Data science</p>
 </div>
 
 
@@ -323,11 +365,996 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="title-1-header" class="level1">
-<h1>Title 1 Header</h1>
-<section id="title-2-header" class="level2">
-<h2 class="anchored" data-anchor-id="title-2-header">Title 2 Header</h2>
-<p><a href="https://quarto.org/docs/authoring/markdown-basics.html#links-images">MarkDown Basics</a></p>
+<section id="projects" class="level1">
+<h1>Projects</h1>
+<section id="pandas-machine-learning-on-starwars-data" class="level2">
+<h2 class="anchored" data-anchor-id="pandas-machine-learning-on-starwars-data">Pandas &amp; machine learning on Starwars data</h2>
+<div id="540b4916" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score,accuracy_score</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> tree</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> metrics</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>Problem statement: clean up the data so you can: * Validate the data provided on GitHub lines up with the article by recreating 2 of the visuals from the article * Predict if a person from the survey makes at least $50k</p>
+<p>The data used in this analysis comes from a servey about starwars. There are many questions about starwars, but also some other backround questions such as age &amp; income.</p>
+<ul>
+<li>the data on the website is valid</li>
+<li>The ML model built predicts those who earn 50k or more with 60% accuracy</li>
+</ul>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>In order to properly clean the data we rearranged the formatting of the headers and simplified their names for easier use.</p>
+<div id="c39730a9" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in dataf frame</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://github.com/fivethirtyeight/data/raw/master/star-wars-survey/StarWars.csv'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_cols <span class="op">=</span> pd.read_csv(url,encoding<span class="op">=</span><span class="st">"ISO-8859-1"</span>,nrows<span class="op">=</span><span class="dv">1</span>).melt()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url,encoding<span class="op">=</span><span class="st">"ISO-8859-1"</span>,skiprows<span class="op">=</span><span class="dv">2</span>,header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># replace/rearrange long column names</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>variables_replace <span class="op">=</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Which of the following Star Wars films have you seen</span><span class="ch">\\</span><span class="st">? Please select all that apply</span><span class="ch">\\</span><span class="st">.'</span>:<span class="st">'seen'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.'</span>:<span class="st">'rank'</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.'</span>:<span class="st">'view'</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Do you consider yourself to be a fan of the Star Trek franchise</span><span class="ch">\\</span><span class="st">?'</span>:<span class="st">'star_trek_fan'</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Do you consider yourself to be a fan of the Expanded Universe</span><span class="ch">\\</span><span class="st">?</span><span class="ch">\x8c</span><span class="st">æ'</span>:<span class="st">'expanded_fan'</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Are you familiar with the Expanded Universe</span><span class="ch">\\</span><span class="st">?'</span>:<span class="st">'know_expanded'</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Have you seen any of the 6 films in the Star Wars franchise</span><span class="ch">\\</span><span class="st">?'</span>:<span class="st">'seen_any'</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Do you consider yourself to be a fan of the Star Wars film franchise</span><span class="ch">\\</span><span class="st">?'</span>:<span class="st">'star_wars_fans'</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Which character shot first</span><span class="ch">\\</span><span class="st">?'</span>:<span class="st">'shot_first'</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r'Unnamed: </span><span class="dv">\d</span><span class="op">{1,2}</span><span class="vs">'</span>:np.nan,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">' '</span>:<span class="st">'_'</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>values_replace <span class="op">=</span> {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Response'</span>:<span class="st">''</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Star Wars: Episode '</span>: <span class="st">''</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">' '</span>:<span class="st">'_'</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>df_cols_use <span class="op">=</span> (df_cols</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    .assign(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        value_replace <span class="op">=</span> <span class="kw">lambda</span> x:  x.value.<span class="bu">str</span>.strip().replace(values_replace, regex<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        variable_replace <span class="op">=</span> <span class="kw">lambda</span> x: x.variable.<span class="bu">str</span>.strip().replace(variables_replace, regex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    .ffill()</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    .fillna(value <span class="op">=</span> <span class="st">""</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    .assign(column_names <span class="op">=</span> <span class="kw">lambda</span> x: x.variable_replace.<span class="bu">str</span>.cat(x.value_replace, sep <span class="op">=</span> <span class="st">"__"</span>).<span class="bu">str</span>.strip(<span class="st">'__'</span>).<span class="bu">str</span>.lower())</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> df_cols_use.column_names.to_list()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In the two coding chunks below we were able to filter the data to recreate graphs found on the starwars website. Both graphs were created through filtering for those specific columns and doing the necessary math to calculate the percentages.</p>
+<p>Chart 1:</p>
+<div id="a11ad0b0" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter for people who have seen at least 1 movie</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_835 <span class="op">=</span> df[(df[<span class="st">'seen__i__the_phantom_menace'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode I  The Phantom Menace'</span>) <span class="op">|</span> (df[<span class="st">'seen__ii__attack_of_the_clones'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode II  Attack of the Clones'</span>) <span class="op">|</span> (df[<span class="st">'seen__iii__revenge_of_the_sith'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode III  Revenge of the Sith'</span>) <span class="op">|</span> (df[<span class="st">'seen__iv__a_new_hope'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode IV  A New Hope'</span>) <span class="op">|</span> (df[<span class="st">'seen__v_the_empire_strikes_back'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode V The Empire Strikes Back'</span>) <span class="op">|</span> (df[<span class="st">'seen__vi_return_of_the_jedi'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode VI Return of the Jedi'</span>)]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>total_watched <span class="op">=</span> df_835[<span class="st">"respondentid"</span>].count()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df_835_only <span class="op">=</span> df_835[[<span class="st">'seen__i__the_phantom_menace'</span>,<span class="st">'seen__ii__attack_of_the_clones'</span>,<span class="st">'seen__iii__revenge_of_the_sith'</span>,<span class="st">'seen__iv__a_new_hope'</span>,<span class="st">'seen__v_the_empire_strikes_back'</span>,<span class="st">'seen__vi_return_of_the_jedi'</span>]]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>counted_835 <span class="op">=</span> df_835_only.count()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df_counted_835 <span class="op">=</span> counted_835.reset_index()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df_counted_835.columns <span class="op">=</span> [<span class="st">'columns'</span>,<span class="st">'counts'</span>]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df_counted_835[<span class="st">'counts'</span>] <span class="op">=</span> <span class="bu">round</span>((df_counted_835[<span class="st">'counts'</span>]<span class="op">/</span>total_watched) <span class="op">*</span> <span class="dv">100</span>,<span class="dv">0</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>df_counted_835[<span class="st">'columns'</span>] <span class="op">=</span> df_counted_835[<span class="st">'columns'</span>].replace({<span class="st">'seen__i__the_phantom_menace'</span>: <span class="st">'The Phantom Menace'</span>, <span class="st">'seen__ii__attack_of_the_clones'</span>: <span class="st">'Attack of the Clones'</span>,<span class="st">'seen__iii__revenge_of_the_sith'</span>: <span class="st">'Revenge of the Sith'</span>,<span class="st">'seen__iv__a_new_hope'</span>: <span class="st">'A New Hope'</span>, <span class="st">'seen__v_the_empire_strikes_back'</span>: <span class="st">'The Empire Strikes Back'</span>, <span class="st">'seen__vi_return_of_the_jedi'</span>: <span class="st">'Return of the Jedi'</span>})</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>chart_1 <span class="op">=</span> ggplot(df_counted_835, aes(x<span class="op">=</span><span class="st">'columns'</span>, y<span class="op">=</span><span class="st">'counts'</span>)) <span class="op">+</span> geom_bar(stat<span class="op">=</span><span class="st">'identity'</span>) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">'counts'</span>),hjust<span class="op">=</span><span class="st">'left'</span>) <span class="op">+</span> coord_flip() <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Which 'Star Wars' Movies Have You Seen?"</span>,subtitle<span class="op">=</span><span class="st">'Of 835 respondents who have seen any film'</span>,x<span class="op">=</span><span class="st">''</span>,y<span class="op">=</span><span class="st">''</span>) <span class="op">+</span> theme_classic() <span class="op">+</span> theme(plot_title<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">20</span>), axis_title_y<span class="op">=</span>element_blank(), axis_text_y<span class="op">=</span>element_blank(), axis_ticks_y<span class="op">=</span>element_blank(),axis_line_y<span class="op">=</span>element_blank())</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>chart_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+
+   
+       <meta charset="UTF-8">
+       <style> html, body { margin: 0; padding: 0; } </style>
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js"></script>
+   
+   
+          <div id="yzVWge"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("yzVWge");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"columns":["The Phantom Menace","Attack of the Clones","Revenge of the Sith","A New Hope","The Empire Strikes Back","Return of the Jedi"],
+"counts":[81.0,68.0,66.0,73.0,91.0,88.0]
+},
+"mapping":{
+"x":"columns",
+"y":"counts"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"columns"
+},{
+"type":"float",
+"column":"counts"
+}]
+},
+"coord":{
+"name":"flip",
+"flip":true
+},
+"ggtitle":{
+"text":"Which 'Star Wars' Movies Have You Seen?",
+"subtitle":"Of 835 respondents who have seen any film"
+},
+"guides":{
+"x":{
+"title":""
+},
+"y":{
+"title":""
+}
+},
+"theme":{
+"name":"classic",
+"axis_title_y":{
+"blank":true
+},
+"axis_text_y":{
+"blank":true
+},
+"axis_ticks_y":{
+"blank":true
+},
+"axis_line_y":{
+"blank":true
+},
+"plot_title":{
+"size":20.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"bar",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+"label":"counts"
+},
+"data_meta":{
+},
+"hjust":"left",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing);
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+   
+
+</div>
+</div>
+<p>Chart 2:</p>
+<div id="89f43eaa" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Filter for people who have seen all movies</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_471 <span class="op">=</span> df[(df[<span class="st">'seen__i__the_phantom_menace'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode I  The Phantom Menace'</span>) <span class="op">&amp;</span> (df[<span class="st">'seen__ii__attack_of_the_clones'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode II  Attack of the Clones'</span>) <span class="op">&amp;</span> (df[<span class="st">'seen__iii__revenge_of_the_sith'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode III  Revenge of the Sith'</span>) <span class="op">&amp;</span> (df[<span class="st">'seen__iv__a_new_hope'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode IV  A New Hope'</span>) <span class="op">&amp;</span> (df[<span class="st">'seen__v_the_empire_strikes_back'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode V The Empire Strikes Back'</span>) <span class="op">&amp;</span> (df[<span class="st">'seen__vi_return_of_the_jedi'</span>] <span class="op">==</span> <span class="st">'Star Wars: Episode VI Return of the Jedi'</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>total_watched_471 <span class="op">=</span> df_471[<span class="st">"respondentid"</span>].count()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df_471_rank <span class="op">=</span> df_471[[<span class="st">'rank__i__the_phantom_menace'</span>,<span class="st">'rank__ii__attack_of_the_clones'</span>,<span class="st">'rank__iii__revenge_of_the_sith'</span>,<span class="st">'rank__iv__a_new_hope'</span>,<span class="st">'rank__v_the_empire_strikes_back'</span>,<span class="st">'rank__vi_return_of_the_jedi'</span>]]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>counted_471 <span class="op">=</span> (df_471_rank <span class="op">==</span> <span class="dv">1</span>).<span class="bu">sum</span>()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>df_counted_471 <span class="op">=</span> counted_471.reset_index()</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>df_counted_471.columns <span class="op">=</span> [<span class="st">'columns'</span>,<span class="st">'counts'</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df_counted_471[<span class="st">'counts'</span>] <span class="op">=</span> <span class="bu">round</span>((df_counted_471[<span class="st">'counts'</span>]<span class="op">/</span>total_watched_471) <span class="op">*</span> <span class="dv">100</span>,<span class="dv">0</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df_counted_471[<span class="st">'columns'</span>] <span class="op">=</span> df_counted_471[<span class="st">'columns'</span>].replace({<span class="st">'rank__i__the_phantom_menace'</span>: <span class="st">'The Phantom Menace'</span>, <span class="st">'rank__ii__attack_of_the_clones'</span>: <span class="st">'Attack of the Clones'</span>,<span class="st">'rank__iii__revenge_of_the_sith'</span>: <span class="st">'Revenge of the Sith'</span>,<span class="st">'rank__iv__a_new_hope'</span>: <span class="st">'A New Hope'</span>, <span class="st">'rank__v_the_empire_strikes_back'</span>: <span class="st">'The Empire Strikes Back'</span>, <span class="st">'rank__vi_return_of_the_jedi'</span>: <span class="st">'Return of the Jedi'</span>})</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>chart_2 <span class="op">=</span> ggplot(df_counted_471, aes(x<span class="op">=</span><span class="st">'columns'</span>, y<span class="op">=</span><span class="st">'counts'</span>)) <span class="op">+</span> geom_bar(stat<span class="op">=</span><span class="st">'identity'</span>) <span class="op">+</span> geom_text(aes(label<span class="op">=</span><span class="st">'counts'</span>),hjust<span class="op">=</span><span class="st">'left'</span>) <span class="op">+</span> coord_flip() <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"What's the Best 'Star Wars' Movie?"</span>,subtitle<span class="op">=</span><span class="st">'Of 471 respondents who have seen all six films'</span>,x<span class="op">=</span><span class="st">''</span>,y<span class="op">=</span><span class="st">''</span>) <span class="op">+</span>  theme_classic() <span class="op">+</span> theme(plot_title<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">20</span>), axis_title_y<span class="op">=</span>element_blank(), axis_text_y<span class="op">=</span>element_blank(), axis_ticks_y<span class="op">=</span>element_blank(),axis_line_y<span class="op">=</span>element_blank())</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>chart_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+   
+       <meta charset="UTF-8">
+       <style> html, body { margin: 0; padding: 0; } </style>
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js"></script>
+   
+   
+          <div id="XqSLU1"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("XqSLU1");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"columns":["The Phantom Menace","Attack of the Clones","Revenge of the Sith","A New Hope","The Empire Strikes Back","Return of the Jedi"],
+"counts":[10.0,4.0,6.0,27.0,36.0,17.0]
+},
+"mapping":{
+"x":"columns",
+"y":"counts"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"columns"
+},{
+"type":"float",
+"column":"counts"
+}]
+},
+"coord":{
+"name":"flip",
+"flip":true
+},
+"ggtitle":{
+"text":"What's the Best 'Star Wars' Movie?",
+"subtitle":"Of 471 respondents who have seen all six films"
+},
+"guides":{
+"x":{
+"title":""
+},
+"y":{
+"title":""
+}
+},
+"theme":{
+"name":"classic",
+"axis_title_y":{
+"blank":true
+},
+"axis_text_y":{
+"blank":true
+},
+"axis_ticks_y":{
+"blank":true
+},
+"axis_line_y":{
+"blank":true
+},
+"plot_title":{
+"size":20.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"bar",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+"label":"counts"
+},
+"data_meta":{
+},
+"hjust":"left",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"2"
+};
+           fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing);
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+   
+
+</div>
+</div>
+<p>In preperation for the machine learning model, The data had to be cleaned and formatted. In the code chunck below, there are multiple sections labeling what each code does to clean the data and prepare it for a ML model.</p>
+<div id="c9f2bc63" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cleaning up the data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cleaning age range</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (df.assign(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  age <span class="op">=</span> <span class="kw">lambda</span> x: x.age.<span class="bu">str</span>.replace(<span class="st">'18-29'</span>,<span class="st">'23.5'</span>).<span class="bu">str</span>.replace(<span class="st">'30-44'</span>,<span class="st">'37'</span>).<span class="bu">str</span>.replace(<span class="st">'45-60'</span>,<span class="st">'52.5'</span>).<span class="bu">str</span>.replace(<span class="st">'&gt; 60'</span>,<span class="st">'60'</span>).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># clean education to numerical</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (df.assign(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a> education <span class="op">=</span> <span class="kw">lambda</span> x: x.education.<span class="bu">str</span>.replace(<span class="st">'Less than high school degree'</span>,<span class="st">'9'</span>).<span class="bu">str</span>.replace(<span class="st">'High school degree'</span>,<span class="st">'12'</span>).<span class="bu">str</span>.replace(<span class="st">'Some college or Associate degree'</span>,<span class="st">'14'</span>).<span class="bu">str</span>.replace(<span class="st">'Bachelor degree'</span>,<span class="st">'16'</span>).<span class="bu">str</span>.replace(<span class="st">'Graduate degree'</span>,<span class="st">'20'</span>).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># clean household_income to numerical</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> (df.household_income</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  .<span class="bu">str</span>.split(<span class="st">"-"</span>,expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  .rename(columns<span class="op">=</span>{<span class="dv">0</span>:<span class="st">'income_min'</span>,<span class="dv">1</span>:<span class="st">'income_max'</span>})</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.<span class="bu">str</span>.replace(<span class="st">"$"</span>,<span class="st">""</span>))</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.<span class="bu">str</span>.replace(<span class="st">","</span>,<span class="st">""</span>))</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.<span class="bu">str</span>.replace(<span class="st">"+"</span>,<span class="st">""</span>))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  .astype(<span class="st">"float"</span>) </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df1.assign(</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a> income <span class="op">=</span> <span class="kw">lambda</span> x :((x.income_max <span class="op">+</span> x.income_min)<span class="op">/</span><span class="dv">2</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'income'</span>] <span class="op">=</span> df1.income</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">'household_income'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># makes the boolean column Y/N a person makes more than 50k</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'&gt;50k'</span>] <span class="op">=</span> (df[<span class="st">'income'</span>]<span class="op">&gt;=</span><span class="dv">50000</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'&gt;50k'</span>]<span class="op">=</span>df[<span class="st">'&gt;50k'</span>].replace(to_replace<span class="op">=</span><span class="st">'True'</span>,value<span class="op">=</span><span class="st">'1'</span>).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'&gt;50k'</span>]<span class="op">=</span>df[<span class="st">'&gt;50k'</span>].replace(to_replace<span class="op">=</span><span class="st">'False'</span>,value<span class="op">=</span><span class="st">'0'</span>).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#cleans the favorability ratings from strings to numerical. (6=worst/1=best)</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>temp_columns <span class="op">=</span> [<span class="st">'view__han_solo'</span>,<span class="st">'view__luke_skywalker'</span>,<span class="st">'view__princess_leia_organa'</span>,<span class="st">'view__anakin_skywalker'</span>,<span class="st">'view__obi_wan_kenobi'</span>,<span class="st">'view__emperor_palpatine'</span>,<span class="st">'view__darth_vader'</span>,<span class="st">'view__lando_calrissian'</span>,<span class="st">'view__boba_fett'</span>,<span class="st">'view__c-3p0'</span>,<span class="st">'view__r2_d2'</span>,<span class="st">'view__jar_jar_binks'</span>,<span class="st">'view__padme_amidala'</span>,<span class="st">'view__yoda'</span>]</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>rep_num <span class="op">=</span> {</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Unfamiliar (N/A)'</span>:<span class="st">'6'</span>,<span class="st">'Very unfavorably'</span>:<span class="st">'5'</span>,<span class="st">'Somewhat unfavorably'</span>:<span class="st">'4'</span>,<span class="st">'Neither favorably nor unfavorably (neutral)'</span>:<span class="st">'3'</span>,<span class="st">'Somewhat favorably'</span>:<span class="st">'2'</span>, <span class="st">'Very favorably'</span>:<span class="st">'1'</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>df[temp_columns] <span class="op">=</span> df[temp_columns].replace(to_replace<span class="op">=</span>rep_num).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co">#ont-hot remaining categorical columns</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co">#shot_first</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>rep_num <span class="op">=</span> {<span class="st">'Han'</span>:<span class="st">'1'</span>, <span class="st">'Greedo'</span>:<span class="st">'0'</span>,<span class="st">"I don't understand this question"</span>:<span class="st">'2'</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'shot_first'</span>] <span class="op">=</span> df[<span class="st">'shot_first'</span>].replace(to_replace<span class="op">=</span>rep_num).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">#all yes/no columns</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>df.replace(to_replace<span class="op">=</span><span class="st">'Yes'</span>,value<span class="op">=</span><span class="st">'1'</span>)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>df.replace(to_replace<span class="op">=</span><span class="st">'No'</span>,value<span class="op">=</span><span class="st">'0'</span>)</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="co">#gender</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>df.replace(to_replace<span class="op">=</span><span class="st">'Male'</span>,value<span class="op">=</span><span class="st">'1'</span>)</span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>df.replace(to_replace<span class="op">=</span><span class="st">'Female'</span>,value<span class="op">=</span><span class="st">'0'</span>)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co">#seen starwars movies (1=seen/0=not seen)</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>temp_columns <span class="op">=</span> [<span class="st">'seen__i__the_phantom_menace'</span>,<span class="st">'seen__ii__attack_of_the_clones'</span>,<span class="st">'seen__iii__revenge_of_the_sith'</span>,<span class="st">'seen__iv__a_new_hope'</span>,<span class="st">'seen__v_the_empire_strikes_back'</span>,<span class="st">'seen__vi_return_of_the_jedi'</span>]</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>rep_num<span class="op">=</span>{</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Star Wars: Episode I  The Phantom Menace'</span>:<span class="st">'1'</span>,<span class="st">'Star Wars: Episode II  Attack of the Clones'</span>:<span class="st">'1'</span>,<span class="st">'Star Wars: Episode III  Revenge of the Sith'</span>:<span class="st">'1'</span>,<span class="st">'Star Wars: Episode IV  A New Hope'</span>:<span class="st">'1'</span>,<span class="st">'Star Wars: Episode V The Empire Strikes Back'</span>:<span class="st">'1'</span>,<span class="st">'Star Wars: Episode VI Return of the Jedi'</span>:<span class="st">'1'</span>,np.nan:<span class="st">'0'</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>df[temp_columns]<span class="op">=</span>df[temp_columns].replace(to_replace<span class="op">=</span>rep_num).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="co"># location (0=ENC/1=ESC/2=MA/3=M/4=NE/5=P/6=SA/7=WNC/8=WSC)</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>rep_num <span class="op">=</span> {</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>  <span class="st">'East North Central'</span>:<span class="st">'0'</span>,<span class="st">'East South Central'</span>:<span class="st">'1'</span>,<span class="st">'Middle Atlantic'</span>:<span class="st">'2'</span>,<span class="st">'Mountain'</span>:<span class="st">'3'</span>,<span class="st">'New England'</span>:<span class="st">'4'</span>,<span class="st">'Pacific'</span>:<span class="st">'5'</span>,<span class="st">'South Atlantic'</span>:<span class="st">'6'</span>,<span class="st">'West North Central'</span>:<span class="st">'7'</span>,<span class="st">'West South Central'</span>:<span class="st">'8'</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'location_(census_region)'</span>] <span class="op">=</span> df[<span class="st">'location_(census_region)'</span>].replace(to_replace<span class="op">=</span>rep_num).astype(<span class="st">'float'</span>)</span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The table below shows the results of cleaning the data.</p>
+<div id="a1d17e95" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">respondentid</th>
+<th data-quarto-table-cell-role="th">seen_any</th>
+<th data-quarto-table-cell-role="th">star_wars_fans</th>
+<th data-quarto-table-cell-role="th">seen__i__the_phantom_menace</th>
+<th data-quarto-table-cell-role="th">seen__ii__attack_of_the_clones</th>
+<th data-quarto-table-cell-role="th">seen__iii__revenge_of_the_sith</th>
+<th data-quarto-table-cell-role="th">seen__iv__a_new_hope</th>
+<th data-quarto-table-cell-role="th">seen__v_the_empire_strikes_back</th>
+<th data-quarto-table-cell-role="th">seen__vi_return_of_the_jedi</th>
+<th data-quarto-table-cell-role="th">rank__i__the_phantom_menace</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">shot_first</th>
+<th data-quarto-table-cell-role="th">know_expanded</th>
+<th data-quarto-table-cell-role="th">expanded_fan</th>
+<th data-quarto-table-cell-role="th">star_trek_fan</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">location_(census_region)</th>
+<th data-quarto-table-cell-role="th">income</th>
+<th data-quarto-table-cell-role="th">&gt;50k</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3292731220</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>5.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>23.5</td>
+<td>14.0</td>
+<td>7.0</td>
+<td>124999.5</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>3292719380</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>23.5</td>
+<td>16.0</td>
+<td>2.0</td>
+<td>37499.5</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">15</th>
+<td>3292583038</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>23.5</td>
+<td>14.0</td>
+<td>8.0</td>
+<td>12499.5</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">16</th>
+<td>3292580516</td>
+<td>1</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>23.5</td>
+<td>16.0</td>
+<td>4.0</td>
+<td>74999.5</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">22</th>
+<td>3292511801</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>6.0</td>
+<td>...</td>
+<td>0.0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>23.5</td>
+<td>16.0</td>
+<td>6.0</td>
+<td>74999.5</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1138</th>
+<td>3288469047</td>
+<td>1</td>
+<td>0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>2.0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>60.0</td>
+<td>20.0</td>
+<td>7.0</td>
+<td>74999.5</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1146</th>
+<td>3288446529</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>...</td>
+<td>2.0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>60.0</td>
+<td>16.0</td>
+<td>7.0</td>
+<td>74999.5</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1152</th>
+<td>3288429451</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>6.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>23.5</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>12499.5</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1171</th>
+<td>3288402643</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>6.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>60.0</td>
+<td>16.0</td>
+<td>3.0</td>
+<td>37499.5</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1175</th>
+<td>3288401136</td>
+<td>1</td>
+<td>1</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>...</td>
+<td>1.0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>52.5</td>
+<td>20.0</td>
+<td>8.0</td>
+<td>74999.5</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+<p>137 rows × 39 columns</p>
+</div>
+</div>
+</div>
+<p>The RandomForrestClassifier model was used to predict if a person earned 50k or more.</p>
+<div id="cb74d3fe" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Machine learning model</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x_pred <span class="op">=</span> df.drop(df.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">'respondentid|income|&gt;50k'</span>).columns,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> df[<span class="st">'&gt;50k'</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x_train,x_test,y_train,y_test <span class="op">=</span> train_test_split(x_pred,y_pred,test_size<span class="op">=</span><span class="fl">0.25</span>,random_state<span class="op">=</span><span class="dv">18</span> )</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">100</span>,random_state<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> clf.fit(x_train,y_train)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(x_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>Below are the scores of the machine learning model as well as the graph showing the feature importance.</p>
+<p>It should be noted the accuracy score is 0.6. No other score in the clasification report goes above 0.7.</p>
+<p>Interestingly, the model determined that the “view_padme_amidala” column had the most importance (0.09), followed by “age” (0.07), “location”(0.06), and “education”(0.06).</p>
+<div id="2b6fcce0" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.accuracy_score(y_pred,y_test))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(metrics.classification_report(y_pred,y_test))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df_features <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'f_names'</span>: x_train.columns,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'f_values'</span>: clf.feature_importances_</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>).sort_values(<span class="st">'f_values'</span>,ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df_features.head(<span class="dv">10</span>).sort_values(by<span class="op">=</span><span class="st">'f_values'</span>,ascending<span class="op">=</span><span class="va">True</span>).reset_index()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>chart <span class="op">=</span> (</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    ggplot(data,aes(x<span class="op">=</span><span class="st">'f_values'</span>,y<span class="op">=</span><span class="st">'f_names'</span>)) <span class="op">+</span> geom_bar(stat<span class="op">=</span><span class="st">'identity'</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>chart.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6
+              precision    recall  f1-score   support
+
+         0.0       0.47      0.54      0.50        13
+         1.0       0.70      0.64      0.67        22
+
+    accuracy                           0.60        35
+   macro avg       0.58      0.59      0.58        35
+weighted avg       0.61      0.60      0.60        35
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+
+   
+       <meta charset="UTF-8">
+       <style> html, body { margin: 0; padding: 0; } </style>
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.9.0/js-package/distr/lets-plot.min.js"></script>
+   
+   
+          <div id="O9W3Dy"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("O9W3Dy");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"f_names":["rank__ii__attack_of_the_clones","view__boba_fett","view__lando_calrissian","rank__iii__revenge_of_the_sith","rank__v_the_empire_strikes_back","view__jar_jar_binks","education","location_(census_region)","age","view__padme_amidala"],
+"f_values":[0.03722808971951627,0.03781400190614599,0.03946378033269719,0.0424310076012903,0.04461497543442963,0.05641742474430097,0.06427756864678219,0.0655193640397909,0.07486997968460457,0.09078023464368515]
+},
+"mapping":{
+"x":"f_values",
+"y":"f_names"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"int",
+"column":"index"
+},{
+"type":"str",
+"column":"f_names"
+},{
+"type":"float",
+"column":"f_values"
+}]
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"bar",
+"stat":"identity",
+"mapping":{
+},
+"data_meta":{
+},
+"orientation":"y",
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"3"
+};
+           fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing);
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+   
+
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Due to the low accuracy score, it would be reccommended that a revised data cleaning and formatting be used, as well as an update to the ML model used to predict whether a person makes 50k or more.</p>
+<p>Despite the low accuracy, the data from GitHub is accurate to the report made online, and 2 visuals from the report were recreated.</p>
 
 
 </section>
