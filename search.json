@@ -132,9 +132,9 @@
   {
     "objectID": "Working_Projects/project1.html",
     "href": "Working_Projects/project1.html",
-    "title": "Client Report - [Insert Project Title]",
+    "title": "Personal Journal",
     "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\npublic class Journal\n{\n    public List&lt;Entry&gt; _entry = new List&lt;Entry&gt;();\n    public int _password;\n\n    public void DisplayJournal()\n    {\n        foreach (Entry i in _entry)\n        {\n            i.DisplayEntry();   \n        }\n    }\n\n}\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "ml.html",
@@ -220,18 +220,24 @@
     "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "Working_Projects.html",
-    "href": "Working_Projects.html",
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
   },
   {
-    "objectID": "Working_Projects.html#title-2-header",
-    "href": "Working_Projects.html#title-2-header",
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
     "title": "about me",
     "section": "",
-    "text": "MarkDown Basics"
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
   },
   {
     "objectID": "Cleansing_Exploration/project5.html",
