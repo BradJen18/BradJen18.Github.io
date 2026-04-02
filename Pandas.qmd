@@ -1,10 +1,274 @@
 ---
-title: "about me"
-subtitle: "my data science portfolio"
+title: "Pandas"
+subtitle: "Data science"
 # use quarto markdown to 
 ---
 
-# Title 1 Header
-## Title 2 Header
+# Projects
 
-[MarkDown Basics](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+## Pandas & machine learning on Starwars data
+
+```{python}
+import pandas as pd 
+import numpy as np
+from lets_plot import *
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import f1_score,accuracy_score
+from sklearn.metrics import mean_squared_error
+from sklearn import tree
+from sklearn import metrics
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+## Executive Summary
+
+Problem statement: clean up the data so you can: 
+  *  Validate the data provided on GitHub lines up with the article by recreating 2 of the visuals from the article 
+  * Predict if a person from the survey makes at least $50k
+
+The data used in this analysis comes from a servey about starwars. There are many questions about starwars, but also some other backround questions such as age & income.
+
+  * the data on the website is valid
+  * The ML model built predicts those who earn 50k or more with 60% accuracy
+
+
+
+## Methods
+
+In order to properly clean the data we rearranged the formatting of the headers and simplified their names for easier use.
+
+```{python}
+# Load in dataf frame
+url = 'https://github.com/fivethirtyeight/data/raw/master/star-wars-survey/StarWars.csv'
+
+df_cols = pd.read_csv(url,encoding="ISO-8859-1",nrows=1).melt()
+
+df = pd.read_csv(url,encoding="ISO-8859-1",skiprows=2,header=None)
+
+# replace/rearrange long column names
+variables_replace = {
+    'Which of the following Star Wars films have you seen\\? Please select all that apply\\.':'seen',
+    'Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film.':'rank',
+    'Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her.':'view',
+    'Do you consider yourself to be a fan of the Star Trek franchise\\?':'star_trek_fan',
+    'Do you consider yourself to be a fan of the Expanded Universe\\?\x8cæ':'expanded_fan',
+    'Are you familiar with the Expanded Universe\\?':'know_expanded',
+    'Have you seen any of the 6 films in the Star Wars franchise\\?':'seen_any',
+    'Do you consider yourself to be a fan of the Star Wars film franchise\\?':'star_wars_fans',
+    'Which character shot first\\?':'shot_first',
+    r'Unnamed: \d{1,2}':np.nan,
+    ' ':'_',
+}
+values_replace = {
+  'Response':'',
+  'Star Wars: Episode ': '',
+  ' ':'_'
+}
+
+df_cols_use = (df_cols
+    .assign(
+        value_replace = lambda x:  x.value.str.strip().replace(values_replace, regex=True),
+        variable_replace = lambda x: x.variable.str.strip().replace(variables_replace, regex=True)
+    )
+    .ffill()
+    .fillna(value = "")
+    .assign(column_names = lambda x: x.variable_replace.str.cat(x.value_replace, sep = "__").str.strip('__').str.lower())
+    )
+
+df.columns = df_cols_use.column_names.to_list()
+
+```
+
+In the two coding chunks below we were able to filter the data to recreate graphs found on the starwars website. Both graphs were created through filtering for those specific columns and doing the necessary math to calculate the percentages.
+
+Chart 1:
+```{python}
+#filter for people who have seen at least 1 movie
+
+df_835 = df[(df['seen__i__the_phantom_menace'] == 'Star Wars: Episode I  The Phantom Menace') | (df['seen__ii__attack_of_the_clones'] == 'Star Wars: Episode II  Attack of the Clones') | (df['seen__iii__revenge_of_the_sith'] == 'Star Wars: Episode III  Revenge of the Sith') | (df['seen__iv__a_new_hope'] == 'Star Wars: Episode IV  A New Hope') | (df['seen__v_the_empire_strikes_back'] == 'Star Wars: Episode V The Empire Strikes Back') | (df['seen__vi_return_of_the_jedi'] == 'Star Wars: Episode VI Return of the Jedi')]
+
+total_watched = df_835["respondentid"].count()
+
+df_835_only = df_835[['seen__i__the_phantom_menace','seen__ii__attack_of_the_clones','seen__iii__revenge_of_the_sith','seen__iv__a_new_hope','seen__v_the_empire_strikes_back','seen__vi_return_of_the_jedi']]
+
+counted_835 = df_835_only.count()
+df_counted_835 = counted_835.reset_index()
+df_counted_835.columns = ['columns','counts']
+df_counted_835['counts'] = round((df_counted_835['counts']/total_watched) * 100,0)
+
+df_counted_835['columns'] = df_counted_835['columns'].replace({'seen__i__the_phantom_menace': 'The Phantom Menace', 'seen__ii__attack_of_the_clones': 'Attack of the Clones','seen__iii__revenge_of_the_sith': 'Revenge of the Sith','seen__iv__a_new_hope': 'A New Hope', 'seen__v_the_empire_strikes_back': 'The Empire Strikes Back', 'seen__vi_return_of_the_jedi': 'Return of the Jedi'})
+
+chart_1 = ggplot(df_counted_835, aes(x='columns', y='counts')) + geom_bar(stat='identity') + geom_text(aes(label='counts'),hjust='left') + coord_flip() + labs(title="Which 'Star Wars' Movies Have You Seen?",subtitle='Of 835 respondents who have seen any film',x='',y='') + theme_classic() + theme(plot_title=element_text(size=20), axis_title_y=element_blank(), axis_text_y=element_blank(), axis_ticks_y=element_blank(),axis_line_y=element_blank())
+
+chart_1
+
+```
+
+Chart 2:
+```{python}
+#Filter for people who have seen all movies
+df_471 = df[(df['seen__i__the_phantom_menace'] == 'Star Wars: Episode I  The Phantom Menace') & (df['seen__ii__attack_of_the_clones'] == 'Star Wars: Episode II  Attack of the Clones') & (df['seen__iii__revenge_of_the_sith'] == 'Star Wars: Episode III  Revenge of the Sith') & (df['seen__iv__a_new_hope'] == 'Star Wars: Episode IV  A New Hope') & (df['seen__v_the_empire_strikes_back'] == 'Star Wars: Episode V The Empire Strikes Back') & (df['seen__vi_return_of_the_jedi'] == 'Star Wars: Episode VI Return of the Jedi')]
+
+total_watched_471 = df_471["respondentid"].count()
+
+df_471_rank = df_471[['rank__i__the_phantom_menace','rank__ii__attack_of_the_clones','rank__iii__revenge_of_the_sith','rank__iv__a_new_hope','rank__v_the_empire_strikes_back','rank__vi_return_of_the_jedi']]
+
+counted_471 = (df_471_rank == 1).sum()
+df_counted_471 = counted_471.reset_index()
+df_counted_471.columns = ['columns','counts']
+df_counted_471['counts'] = round((df_counted_471['counts']/total_watched_471) * 100,0)
+
+df_counted_471['columns'] = df_counted_471['columns'].replace({'rank__i__the_phantom_menace': 'The Phantom Menace', 'rank__ii__attack_of_the_clones': 'Attack of the Clones','rank__iii__revenge_of_the_sith': 'Revenge of the Sith','rank__iv__a_new_hope': 'A New Hope', 'rank__v_the_empire_strikes_back': 'The Empire Strikes Back', 'rank__vi_return_of_the_jedi': 'Return of the Jedi'})
+
+chart_2 = ggplot(df_counted_471, aes(x='columns', y='counts')) + geom_bar(stat='identity') + geom_text(aes(label='counts'),hjust='left') + coord_flip() + labs(title="What's the Best 'Star Wars' Movie?",subtitle='Of 471 respondents who have seen all six films',x='',y='') +  theme_classic() + theme(plot_title=element_text(size=20), axis_title_y=element_blank(), axis_text_y=element_blank(), axis_ticks_y=element_blank(),axis_line_y=element_blank())
+
+chart_2
+
+```
+
+In preperation for the machine learning model, The data had to be cleaned and formatted. In the code chunck below, there are multiple sections labeling what each code does to clean the data and prepare it for a ML model.
+
+```{python}
+#cleaning up the data
+
+# cleaning age range
+
+df = (df.assign(
+  age = lambda x: x.age.str.replace('18-29','23.5').str.replace('30-44','37').str.replace('45-60','52.5').str.replace('> 60','60').astype('float')
+))
+
+# clean education to numerical
+
+df = (df.assign(
+ education = lambda x: x.education.str.replace('Less than high school degree','9').str.replace('High school degree','12').str.replace('Some college or Associate degree','14').str.replace('Bachelor degree','16').str.replace('Graduate degree','20').astype('float')
+)
+)
+
+# clean household_income to numerical
+
+df1 = (df.household_income
+  .str.split("-",expand=True)
+  .rename(columns={0:'income_min',1:'income_max'})
+  .apply(lambda x: x.str.replace("$",""))
+  .apply(lambda x: x.str.replace(",",""))
+  .apply(lambda x: x.str.replace("+",""))
+  .astype("float") 
+)
+
+df1 = df1.assign(
+ income = lambda x :((x.income_max + x.income_min)/2).round(2)
+)
+df['income'] = df1.income
+df = df.drop('household_income', axis=1)
+
+# makes the boolean column Y/N a person makes more than 50k
+
+df['>50k'] = (df['income']>=50000)
+df['>50k']=df['>50k'].replace(to_replace='True',value='1').astype('float')
+df['>50k']=df['>50k'].replace(to_replace='False',value='0').astype('float')
+
+#cleans the favorability ratings from strings to numerical. (6=worst/1=best)
+
+temp_columns = ['view__han_solo','view__luke_skywalker','view__princess_leia_organa','view__anakin_skywalker','view__obi_wan_kenobi','view__emperor_palpatine','view__darth_vader','view__lando_calrissian','view__boba_fett','view__c-3p0','view__r2_d2','view__jar_jar_binks','view__padme_amidala','view__yoda']
+rep_num = {
+  'Unfamiliar (N/A)':'6','Very unfavorably':'5','Somewhat unfavorably':'4','Neither favorably nor unfavorably (neutral)':'3','Somewhat favorably':'2', 'Very favorably':'1'
+}
+
+df[temp_columns] = df[temp_columns].replace(to_replace=rep_num).astype('float')
+
+#ont-hot remaining categorical columns
+
+#shot_first
+rep_num = {'Han':'1', 'Greedo':'0',"I don't understand this question":'2'
+}
+df['shot_first'] = df['shot_first'].replace(to_replace=rep_num).astype('float')
+
+#all yes/no columns
+df=df.replace(to_replace='Yes',value='1')
+df=df.replace(to_replace='No',value='0')
+
+#gender
+df=df.replace(to_replace='Male',value='1')
+df=df.replace(to_replace='Female',value='0')
+
+#seen starwars movies (1=seen/0=not seen)
+temp_columns = ['seen__i__the_phantom_menace','seen__ii__attack_of_the_clones','seen__iii__revenge_of_the_sith','seen__iv__a_new_hope','seen__v_the_empire_strikes_back','seen__vi_return_of_the_jedi']
+rep_num={
+  'Star Wars: Episode I  The Phantom Menace':'1','Star Wars: Episode II  Attack of the Clones':'1','Star Wars: Episode III  Revenge of the Sith':'1','Star Wars: Episode IV  A New Hope':'1','Star Wars: Episode V The Empire Strikes Back':'1','Star Wars: Episode VI Return of the Jedi':'1',np.nan:'0'
+}
+
+df[temp_columns]=df[temp_columns].replace(to_replace=rep_num).astype('float')
+
+# location (0=ENC/1=ESC/2=MA/3=M/4=NE/5=P/6=SA/7=WNC/8=WSC)
+
+rep_num = {
+  'East North Central':'0','East South Central':'1','Middle Atlantic':'2','Mountain':'3','New England':'4','Pacific':'5','South Atlantic':'6','West North Central':'7','West South Central':'8'
+}
+
+df['location_(census_region)'] = df['location_(census_region)'].replace(to_replace=rep_num).astype('float')
+
+df = df.dropna()
+
+```
+
+The table below shows the results of cleaning the data.
+
+```{python}
+
+df
+
+```
+
+The RandomForrestClassifier model was used to predict if a person earned 50k or more.
+
+```{python}
+# Machine learning model
+x_pred = df.drop(df.filter(regex='respondentid|income|>50k').columns,axis=1)
+y_pred = df['>50k']
+x_train,x_test,y_train,y_test = train_test_split(x_pred,y_pred,test_size=0.25,random_state=18 )
+
+clf = RandomForestClassifier(n_estimators=100,random_state=18)
+clf = clf.fit(x_train,y_train)
+y_pred = clf.predict(x_test)
+
+
+```
+
+## Results
+
+Below are the scores of the machine learning model as well as the graph showing the feature importance. 
+
+It should be noted the accuracy score is 0.6. No other score in the clasification report goes above 0.7. 
+
+Interestingly, the model determined that the "view_padme_amidala" column had the most importance (0.09), followed by "age" (0.07), "location"(0.06), and "education"(0.06).
+
+```{python}
+
+print(metrics.accuracy_score(y_pred,y_test))
+print(metrics.classification_report(y_pred,y_test))
+ 
+df_features = pd.DataFrame(
+    {
+        'f_names': x_train.columns,
+        'f_values': clf.feature_importances_
+        }
+).sort_values('f_values',ascending=False)
+
+data = df_features.head(10).sort_values(by='f_values',ascending=True).reset_index()
+chart = (
+    ggplot(data,aes(x='f_values',y='f_names')) + geom_bar(stat='identity')
+)
+chart.show()
+
+```
+
+## Conclusion
+
+Due to the low accuracy score, it would be reccommended that a revised data cleaning and formatting be used, as well as an update to the ML model used to predict whether a person makes 50k or more. 
+
+Despite the low accuracy, the data from GitHub is accurate to the report made online, and 2 visuals from the report were recreated.
+
+
+
